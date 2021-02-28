@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% load crispy_forms_tags	%}
+
+{% block title %}
+<title>Profile</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary" style=" text-decoration:underline;">{{ user.email }}</p>
+        </div>
+      </div>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4" style="text-decoration:underline;"><strong>Profile</strong>
+            <p><small>You can change your username, email and password here.</small></p> </legend>
+          {{ u_form|crispy }}
+          <!-- {{ p_form|crispy }} -->
+          <hr>
+          <h6>Gender:</h6>
+          <p class="text-secondary" style="margin-left:80px; text-decoration:underline;">{{ user.profile.gender }}</p>
+          <hr>
+          <hr>
+          <h6>Name:</h6>
+          <p class="text-secondary" style="margin-left:80px; text-decoration:underline;">{{ user.first_name }} {{user.last_name}}</p>
+          <hr>
+          <hr>
+          <h6>ClassLevel:</h6>
+          <p class="text-secondary" style="margin-left:80px; text-decoration:underline;">{{ user.profile.classLevel }}</p>
+          <hr>
+          <hr>
+          <h6>Semester:</h6>
+          <p class="text-secondary" style="margin-left:80px; text-decoration:underline;">{{ user.profile.semester }}</p>
+          <hr>
+          <h6>Department:</h6>
+          <p class="text-secondary" style="margin-left:80px; text-decoration:underline;">{{ user.profile.department }}</p>
+          <hr>
+          <h6>Specialization:</h6>
+          <p class="text-secondary" style="margin-left:80px; text-decoration:underline;">{{ user.profile.specialization }}</p>
+          <hr>
+        </fieldset>
+    <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Update</button>
+          <a class="btn btn-outline-info" style="margin-left:100px;" href="{% url 'password_change' %}" >Change Your Password</a>
+        </div>
+      </form>
+    </div>
+{% endblock content %}

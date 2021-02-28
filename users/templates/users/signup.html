@@ -1,0 +1,49 @@
+<html>
+{% extends 'main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+   <meta charset="utf-8">
+  <title> Signup Form Design Tutorial </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+</head>
+<body>
+
+    <div id="login-box">
+      <div class="left-box">
+        <h1> Sign Up</h1>
+
+
+
+    <form method="post">
+       {%  csrf_token  %}
+<!--           <input type="text" name="{{form.Username}}" placeholder="Username"/>
+          <input type="text" name="{{form.email}}" placeholder="Email"/>
+          <input type="password" name="{{form.password1}}" placeholder="Password"/>
+          <input type="password" name="{{form.password2}}" placeholder="Retype password"/>
+          -->
+       {{  form|crispy }}
+       <!-- <button type="submit">SignUp</button>  -->
+       <input id="signup"  type="submit" name="signup-button" value="Sign Up"/>
+        <p><small>Already have an account<a href="{% url 'login' %}">Sign in
+        </a></small></p>
+    <br><br><br>
+     </form>
+    </div>
+        <div class="right-box">
+          <span class="signinwith">Sign in with<br/>Social Network     </span>
+
+        <button class="social facebook">Log in with Facebook</button>
+        <button class="social twitter">Log in with Twitter</button>
+        <button class="social google">Log in with Google+</button>
+
+
+        </div>
+        <div class="or">OR</div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from PIL import Image
 
 
 class Admin(models.Model):
@@ -18,6 +19,15 @@ class Admin(models.Model):
     updation_date = models.DateTimeField(default=timezone.now)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics', blank=True, null=True)
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        super().save()
+        img = Image.open(self.image.path)
+        if img.height > 250 or img.width > 250:
+            output_size = (250, 250)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+            
     class Meta:
         verbose_name_plural = 'Admin'
 
@@ -61,6 +71,15 @@ class Doctor(models.Model):
     status = models.IntegerField(choices=status_choice)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics', blank=True, null=True)
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        super().save()
+        img = Image.open(self.image.path)
+        if img.height > 250 or img.width > 250:
+            output_size = (250, 250)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
+
     class Meta:
         verbose_name_plural = 'Doctors'
 
@@ -70,6 +89,25 @@ class Doctor(models.Model):
 
 class Patient(models.Model):
     patient = models.OneToOneField(User, default="", on_delete=models.CASCADE)
+    a = 'A'
+    aa = 'A+'
+    b = 'B'
+    bb = 'B+'
+    ab = 'AB'
+    oo = 'O+'
+    o ='O-'
+
+    blood_choice = (
+        (a , 'A'),
+        (aa , 'A+'),
+        (b , 'B'),
+        (bb , 'B+'),
+        (ab , 'AB'),
+        (oo , 'O+'),
+        (o , 'O-'),
+    )
+
+    blood_type = models.CharField(choices=blood_choice, max_length=10, blank=True, null=True)
     address = models.CharField(max_length=100, blank=True, null=True)
     mobile_no = models.CharField(max_length=20, blank=True, null=True)
     age = models.PositiveSmallIntegerField()
@@ -90,6 +128,15 @@ class Patient(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics', blank=True, null=True)
     creation_date = models.DateTimeField(default=timezone.now)
     updation_date = models.DateTimeField(default=timezone.now)
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        super().save()
+        img = Image.open(self.image.path)
+        if img.height > 250 or img.width > 250:
+            output_size = (250, 250)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
 
     class Meta:
         verbose_name_plural = 'Patients'

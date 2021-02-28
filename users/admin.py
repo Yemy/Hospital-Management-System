@@ -21,9 +21,9 @@ class Admin_Admin(admin.ModelAdmin):
 
 
 class PatientAdmin(admin.ModelAdmin):
-    list_display = ('patient', 'gender', 'age', 'address', 'mobile_no', 'status', )
+    list_display = ('patient', 'gender', 'age', 'blood_type', 'address', 'mobile_no', 'status', )
     search_fields = ('mobile_no',)
-    list_filter = ['gender', 'age', 'status', ]
+    list_filter = ['gender', 'age', 'status', 'blood_type', ]
 
 
 admin.site.register(DoctorSpecialization, SpecializationAdmin)
