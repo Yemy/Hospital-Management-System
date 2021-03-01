@@ -1,0 +1,139 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  {% if user.admin %}
+    <!-- start: BASIC EXAMPLE -->
+      <div class="container-fluid container-fullw bg-white">
+      <div class="row">
+
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-green no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-users fa-stack-1x fa-inverse"></i> </span>
+
+              <h4 class="my-2 text-white" style="font-size: 30px;">Manage appointment</h4>
+              <p class="cl-effect-1">
+                <a href="Amanage_appointment.php">
+           press here
+
+                </a>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+    <div class="col-sm-4">
+          <div class="panel panel-yellow no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="ti-files fa-1x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+
+              <h4 class="my-2 text-white" style="font-size: 30px;">Book appointment</h4>
+              <p class="links cl-effect-1">
+                <a href=".php">
+                  <a href="Abook_appointment.php">
+          press here
+                </a>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+    <div class="col-sm-4">
+          <div class="panel panel-red no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="ti-files fa-1x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+              <h4 class="my-2 text-white" style="font-size: 30px;">Approve appointment</h4>
+              <p class="links cl-effect-1">
+                <a href="patient_appointment_request.php">
+                  press here:
+                  <a href="approve_appointment.php">
+
+                </a>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% elif user.doctor %}
+    <!-- start: BASIC EXAMPLE -->
+      <div class="container-fluid container-fullw bg-white">
+      <div class="row">
+                    <div class="col-sm-4">
+          <div class="panel panel-blue no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
+              <h2 class="StepTitle">Manage Appointments</h2>
+
+              <p class="cl-effect-1">
+                <a href="manage_appointment.php">
+    <?php echo = "Hello"; ?>
+                </a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-green no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
+              <h2 class="StepTitle">Book Appointment </h2>
+
+              <p class="cl-effect-1">
+                <a href="Dbook_appointment.php">
+                press here:
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  {% elif user.patient %}
+    <!-- start: BASIC EXAMPLE -->
+      <div class="container-fluid container-fullw bg-white">
+      <div class="row">
+
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-green no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="ti-files fa-1x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
+              <h2 class="StepTitle"> My appointment History</h2>
+
+              <p class="links cl-effect-1">
+                <a href=".php">
+                  <a href="pappointment-history.php">
+          press here
+                </a>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-4">
+          <div class="panel panel-blue no-radius text-center">
+            <div class="panel-body">
+              <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-users fa-stack-1x fa-inverse"></i> </span>
+              <h2 class="StepTitle">Book Appointment</h2>
+
+              <p class="cl-effect-1">
+                <a href="book-appointment.php">
+           press here
+
+                </a>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endif %}
+{% endblock content %}

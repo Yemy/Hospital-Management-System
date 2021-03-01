@@ -1,5 +1,5 @@
 <html>
-{% extends 'main.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
 <body>
 
-    <div class="loginbox">
+    <div class="loginbox" style="margin-top:50px;">
     <img src="{% static 'images/avatar.png' %}" class="avatar">
         <h1> <strong> Login </strong> <img src="{% static 'images/key.ico' %}"> </h1>
         <form method="post">

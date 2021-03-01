@@ -131,4 +131,4 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'main-home'
 LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL  =   'index'
+# LOGOUT_REDIRECT_URL  =   'index'

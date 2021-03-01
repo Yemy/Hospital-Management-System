@@ -1,11 +1,17 @@
 from django.urls import path
 from .import views
 from django.contrib.auth import views as auth_views
+from .views import DoctorView, PatientView, AppointmentView, DischargeView
 
 
 urlpatterns = [
-	# path('logout/', views.login, name='logout'),
-	# path('login/', views.login, name='login'),
+	path('profile/', views.profile, name='profile'),
+	path('doctorProfile', views.DoctorProfile, name='doctor_profile'),
+	path('patientProfile', views.PatientProfile, name='patient_profile'),
+	path('doctor/', DoctorView.as_view(), name='doctor'),
+	path('patient/', PatientView.as_view(), name='patient'),
+	path('appointment/', AppointmentView.as_view(), name='appointment'),
+	path('discharge_patient/', DischargeView.as_view(), name='discharge_patient'),
 	path('signup/', views.register, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),

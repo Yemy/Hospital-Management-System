@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Patients  | Dashboard</title>
+		<title>Home|YAHMS </title>
 
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{% static 'css/themes/theme-1.css' %}" id="skin_color" />
@@ -16,8 +16,13 @@
 		<link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="screen">
 		<link href="{% static 'vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css' %}" rel="stylesheet" media="screen">
 		<link href="{% static 'vendor/bootstrap-timepicker/bootstrap-timepicker.min.css' %}" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}">
+
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 		<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+		<!-- <link rel="shortcut icon" type="image/png" href="{% static 'main/images/dec.png' %}"> -->
+
     <!-- <link rel="stylesheet" href="{% static 'css/themes/theme-2.css' %}" id="skin_color" />
     <link rel="stylesheet" href="{% static 'css/themes/theme-3.css' %}" id="skin_color" />
     <link rel="stylesheet" href="{% static 'css/themes/theme-4.css' %}" id="skin_color" />
@@ -63,7 +68,7 @@
   						<ul class="main-navigation-menu">
                 {% if user.admin %}
                 <li>
-                  <a href="dashboard.php">
+                  <a href="{% url 'main-home' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-home"></i>
@@ -72,7 +77,7 @@
                         <span class="title"> Dashboard </span>
                       </div></div></a></li>
                 <li>
-                  <a href="#Doctor">
+                  <a href="{% url 'doctor' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -84,7 +89,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#Patient">
+                  <a href="{% url 'patient' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -96,7 +101,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#Appointment">
+                  <a href="{% url 'appointment' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -110,7 +115,7 @@
 
                 {% elif user.doctor %}
                 <li>
-                  <a href="dashboard.php">
+                  <a href="{% url 'main-home' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-home"></i>
@@ -119,7 +124,7 @@
                         <span class="title"> Dashboard </span>
                       </div></div></a></li>
                 <li>
-                  <a href="#Patient">
+                  <a href="{% url 'patient' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -131,7 +136,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#Appointment">
+                  <a href="{% url 'appointment' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -144,7 +149,7 @@
                 </li>
                 {% elif user.patient %}
                 <li>
-                  <a href="dashboard.php">
+                  <a href="{% url 'main-home' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-home"></i>
@@ -153,7 +158,7 @@
                         <span class="title"> Dashboard </span>
                       </div></div></a></li>
                 <li>
-                  <a href="PAdashboard.php">
+                  <a href="{% url 'appointment' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -165,7 +170,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="Discharge_paper.php">
+                  <a href="{% url 'discharge_patient' %}">
                     <div class="item-content">
                       <div class="item-media">
                         <i class="ti-pencil-alt"></i>
@@ -224,9 +229,20 @@
         								</a>
         								<ul class="dropdown-menu dropdown-dark">
         									<li>
-        										<a href="#profile">
-        											My Profile
-        										</a>
+														{% if user.admin %}
+	        										<a href="{% url 'profile' %}">
+	        											My Profile
+	        										</a>
+														{% elif user.doctor %}
+															<a href="{% url 'doctor_profile' %}">
+	        											My Profile
+	        										</a>
+														{% elif user.patient %}
+															<a href="{% url 'patient_profile' %}">
+	        											My Profile
+	        										</a>
+														{% else %}
+														{% endif %}
         									</li>
 
         									<li>
@@ -413,6 +429,10 @@
 		<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
 		<script src="{% static 'vendor/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
 		<script src="{% static 'vendor/bootstrap-timepicker/bootstrap-timepicker.min.js' %}"></script>
+
+		<script type="text/javascript" src="{% static 'main/js/jquery-3.5.1.js' %}"> </script>
+	  <script type="text/javascript" src="{% static 'main/js/popper.min.js' %}"> </script>
+	  <script type="text/javascript" src="{% static 'main/js/bootstrap.min.js' %}"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<!-- start: CLIP-TWO JAVASCRIPTS -->
 		<script src="{% static 'js/main.js' %}"></script>
