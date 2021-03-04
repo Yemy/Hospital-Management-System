@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block title %}
+<title>Confirm Delete Doctor</title>
+{% endblock title %}
+
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><strong>Delete Patient</strong></legend>
+            <h4>Are You Sure You Want To Delete <b>{{object.patient.first_name}}</b> ?</h4>
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+            <a class="btn btn-outline-secondary" href="{% url 'manage_patients' %}" >No, Cancel</a>
+          </div>
+        </form>
+    </div>
+{% endblock content %}

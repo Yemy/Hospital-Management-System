@@ -3,6 +3,66 @@ from .forms import UserRegisterForm , UserUpdateForm, ProfileUpdateForm, DoctorP
 from django.contrib import messages
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, UpdateView, DetailView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Doctor, Patient
+from main.models import Appointment
+from django.urls import reverse_lazy
+
+
+class ManageDoctors(LoginRequiredMixin, ListView):
+    model = Doctor
+    template_name = 'manage_doctors.html'
+    context_object_name = 'doctors'
+
+
+class UpdateDoctor(LoginRequiredMixin, UpdateView):
+    model = Doctor
+    success_url = reverse_lazy('manage_doctors')
+    template_name = 'update_doctor.html'
+    fields = '__all__'
+
+
+class DeleteDoctor(LoginRequiredMixin, DeleteView):
+    model = Doctor
+    success_url = reverse_lazy('manage_doctors')
+    template_name = 'doctor_confirm_delete.html'
+
+
+class ManagePatient(LoginRequiredMixin, ListView):
+    model = Patient
+    template_name = 'manage_patients.html'
+    context_object_name = 'patients'
+
+
+class UpdatePatient(LoginRequiredMixin, UpdateView):
+    model = Patient
+    success_url = reverse_lazy('manage_patients')
+    template_name = 'update_patient.html'
+    fields = '__all__'
+
+
+class DeletePatient(LoginRequiredMixin, DeleteView):
+    model = Patient
+    success_url = reverse_lazy('manage_patients')
+    template_name = 'patient_confirm_delete.html'
+
+
+class DoctorsListView(LoginRequiredMixin, ListView):
+    model = Doctor
+    template_name = 'doctors_list.html'
+    context_object_name = 'doctors'
+
+
+class PatientsListView(LoginRequiredMixin, ListView):
+    model = Patient
+    template_name = 'patients_list.html'
+    context_object_name = 'patients'
+
+class AppointmentsListView(LoginRequiredMixin, ListView):
+    model = Appointment
+    template_name = 'appointments_list.html'
+    context_object_name = 'appointments'
 
 
 def register(request):

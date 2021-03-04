@@ -1,10 +1,18 @@
 from django.urls import path
 from .import views
 from django.contrib.auth import views as auth_views
-from .views import DoctorView, PatientView, AppointmentView, DischargeView
+from .views import *
 
 
 urlpatterns = [
+	path('update_patient/<int:pk>/', UpdatePatient.as_view(), name='update_patient'),
+	path('delete_patient/<int:pk>/', DeletePatient.as_view(), name='delete_patient'),
+	path('manage_patient/', ManagePatient.as_view(), name='manage_patients'),
+	path('update_doctor/<int:pk>/', UpdateDoctor.as_view(), name='update_doctor'),
+	path('delete_doctor/<int:pk>/', DeleteDoctor.as_view(), name='delete_doctor'),
+	path('manage_doctors/', ManageDoctors.as_view(), name='manage_doctors'),
+	path('doctors_list/', DoctorsListView.as_view(), name='doctors_list'),
+	path('patients_list/',PatientsListView.as_view(), name='patients_list'),
 	path('profile/', views.profile, name='profile'),
 	path('doctorProfile', views.DoctorProfile, name='doctor_profile'),
 	path('patientProfile', views.PatientProfile, name='patient_profile'),

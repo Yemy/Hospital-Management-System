@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container-fluid container-fullw bg-white">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15"> <a href="{% url 'main-home' %}"><img src="{% static 'images/back.ICO' %}" alt=""> </a>View <span class="text-bold">Doctors</span> List</h5>
+
+      <table class="table table-hover" id="sample-table-1">
+          <thead>
+            <tr>
+              <th class="center">ID</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Specialization</th>
+              <th>Email</th>
+              <th>Phone_no</th>
+              <th>Mobile No</th>
+              <th>Address</th>
+              <th>Working Hours</th>
+              <th>Status</th>
+              <th>Creation Date</th>
+              <th>Updation Date </th>
+            </tr>
+          </thead>
+        {% for doctor in doctors %}
+          <tbody>
+            <tr>
+              <td class="center">{{doctor.id}}</td>
+              <td class="hidden-xs">{{doctor.doctor.first_name}} {{doctor.doctor.last_name}}</td>
+              <td>{{doctor.gender}}</td>
+              <td>{{doctor.specialization}}</td>
+              <td>{{doctor.email}}</td>
+              <td>{{doctor.phone_no}}</td>
+              <td>{{doctor.mobile_no}}</td>
+              <td>{{doctor.address}}</td>
+              <td>{{doctor.working_hour}}</td>
+              <td>{{doctor.status}}</td>
+              <td>{{doctor.creation_date}}</td>
+              <td>{{doctor.updation_date}}</td>
+            </tr>
+           </tbody>
+         {% endfor %}
+         </table>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

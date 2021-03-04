@@ -4,46 +4,41 @@
 	{% if user.admin %}
 		<div class="container-fluid container-fullw bg-white">
 		<div class="row">
+
+		<a href="{% url 'patients_list' %}">
 			<div class="col-sm-4">
 				<div class="panel panel-green no-radius text-center">
 					<div class="panel-body">
 						<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-smile-o fa-stack-1x fa-inverse"></i> </span>
 						<h2 class="StepTitle">patients</h2>
-
 						<p class="links cl-effect-1">
-							<a href="edit-profile.php">
-								Total #Patients
-							</a>
+								Total #Patients: <h3 style="color: white;">{{ patients}}</h3>
 						</p>
 					</div>
 				</div>
-			</div>
+			</div></a>
 
+		<a href="{% url 'doctors_list' %}">
 			<div class="col-sm-4">
 				<div class="panel panel-blue no-radius text-center">
 					<div class="panel-body">
 						<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
 						<h2 class="StepTitle"> Doctors</h2>
-
 						<p class="links cl-effect-1">
-							<a href="manage-medhistory.php">
-								 Total #Doctors
-							</a>
+								 Total #Doctors: <h3 class="text-white">{{ doctors}}</h3>
 						</p>
-					</div></div></div>
+					</div></div></div></a>
 
+				<a href="{% url 'appointments_list' %}">
 					<div class="col-sm-4">
 						<div class="panel panel-blue no-radius text-center">
 							<div class="panel-body">
 								<span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
 								<h2 class="StepTitle"> Appointments</h2>
-
 								<p class="links cl-effect-1">
-									<a href="manage-medhistory.php">
-										 Total #Appointments
-									</a>
+										 Total #Appointments: <h3 style="color: white;">{{ appointments}}</h3>
 								</p>
-							</div></div></div>
+							</div></div></div></a>
 				</div></div>
 	{% elif user.doctor %}
 		<div class="container-fluid container-fullw bg-white">

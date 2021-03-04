@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container-fluid container-fullw bg-white">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15"> <a href="{% url 'main-home' %}"><img src="{% static 'images/back.ICO' %}" alt=""> </a>View <span class="text-bold">Patients</span> List</h5>
+
+      <table class="table table-hover" id="sample-table-1">
+          <thead>
+            <tr>
+              <th class="center">ID</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Email</th>
+              <th>Phone_no</th>
+              <th>Blood Type</th>
+              <th>Address</th>
+              <th>Age</th>
+              <th>Status</th>
+              <th>Creation Date </th>
+              <th>Updation Date </th>
+            </tr>
+          </thead>
+        {% for patient in patients %}
+          <tbody>
+            <tr>
+              <td class="center">{{patient.id}}</td>
+              <td class="hidden-xs">{{patient.patient.first_name}} {{patient.patient.last_name}}</td>
+              <td>{{patient.gender}}</td>
+              <td>{{patient.email}}</td>
+              <td>{{patient.mobile_no}}</td>
+              <td>{{patient.blood_type}}</td>
+              <td>{{patient.address}}</td>
+              <td>{{patient.age}}</td>
+              <td>{{patient.status}}</td>
+              <td>{{patient.creation_date}}</td>
+              <td>{{patient.updation_date}}</td>
+            </tr>
+           </tbody>
+         {% endfor %}
+         </table>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

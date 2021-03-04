@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container-fluid container-fullw bg-white">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15"> <a href="{% url 'main-home' %}"><img src="{% static 'images/back.ICO' %}" alt=""> </a>View <span class="text-bold">Doctors</span> List</h5>
+
+      <table class="table table-hover" id="sample-table-1">
+          <thead>
+            <tr>
+              <th class="center">ID</th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Specialization</th>
+              <th>Working Hours</th>
+              <th>Status</th>
+              <th>Updation Date </th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+        {% for doctor in doctors %}
+          <tbody>
+            <tr>
+              <td class="center">{{doctor.id}}</td>
+              <td class="hidden-xs">{{doctor.doctor.first_name}} {{doctor.doctor.last_name}}</td>
+              <td>{{doctor.gender}}</td>
+              <td>{{doctor.specialization}}</td>
+              <td>{{doctor.working_hour}}</td>
+              <td>{{doctor.status}}</td>
+              <td>{{doctor.updation_date}}</td>
+              <td><a href="{% url 'update_doctor' doctor.pk %}"><i class="fa fa-edit" aria-hidden="true"></i></a> </td>
+              <td><a href="{% url 'delete_doctor' doctor.pk %}"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>
+            </tr>
+           </tbody>
+         {% endfor %}
+         </table>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

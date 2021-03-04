@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container-fluid container-fullw bg-white">
+    <div class="row">
+      <div class="col-md-12">
+        <h5 class="over-title margin-bottom-15"> <a href="{% url 'main-home' %}"><img src="{% static 'images/back.ICO' %}" alt=""> </a>View <span class="text-bold">Appointments</span> List</h5>
+
+      <table class="table table-hover" id="sample-table-1">
+          <thead>
+            <tr>
+              <th class="center">ID</th>
+              <th>Doctor Name</th>
+              <th>Patient Name</th>
+              <th>Appointment Time</th>
+              <th>Status</th>
+              <th>Creation Date</th>
+              <th>Updation Date </th>
+            </tr>
+          </thead>
+        {% for appointment in appointments %}
+          <tbody>
+            <tr>
+              <td class="center">{{appointment.id}}</td>
+              <td class="hidden-xs">{{appointment.doctor.doctor.first_name}} {{appointment.doctor.doctor.last_name}}</td>
+              <td class="hidden-xs">{{appointment.patient.patient.first_name}} {{appointment.patient.patient.last_name}}</td>
+              <td>{{appointment.appointment_time}}</td>
+              <td>{{appointment.status}}</td>
+              <td>{{appointment.created_date}}</td>
+              <td>{{appointment.updation_date}}</td>
+            </tr>
+           </tbody>
+         {% endfor %}
+         </table>
+        </div>
+      </div>
+    </div>
+{% endblock content %}

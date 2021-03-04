@@ -27,7 +27,7 @@ class Admin(models.Model):
             output_size = (250, 250)
             img.thumbnail(output_size)
             img.save(self.image.path)
-            
+
     class Meta:
         verbose_name_plural = 'Admin'
 
@@ -53,6 +53,7 @@ class Doctor(models.Model):
     address = models.CharField(max_length=100, blank=True, null=True)
     phone_no = models.CharField(max_length=20, blank=True, null=True)
     mobile_no = models.CharField(max_length=20, blank=True, null=True)
+    creation_date = models.DateTimeField(default=timezone.now, blank=True, null=True)
     updation_date = models.DateTimeField(default=timezone.now)
     Male = 'M'
     Female = 'F'
