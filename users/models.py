@@ -30,6 +30,9 @@ class Admin(models.Model):
 
     class Meta:
         verbose_name_plural = 'Admin'
+    @property
+    def first_name(self):
+        return self.admin.first_name
 
     def __str__(self):
         return self.admin.username
@@ -83,6 +86,11 @@ class Doctor(models.Model):
 
     class Meta:
         verbose_name_plural = 'Doctors'
+
+    @property
+    def first_name(self):
+        return self.doctor.first_name
+    
 
     def __str__(self):
         return self.doctor.username
@@ -141,6 +149,10 @@ class Patient(models.Model):
 
     class Meta:
         verbose_name_plural = 'Patients'
+
+    @property
+    def first_name(self):
+        return self.patient.first_name
 
     def __str__(self):
         return self.patient.username
